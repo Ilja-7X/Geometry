@@ -11,6 +11,7 @@
 
 void input(char*);
 char* checking_spaces(char* p);
+char* checking_symbol(char* p, char symbol);
 
 int main()
 {
@@ -32,6 +33,10 @@ int main()
 
     p = checking_spaces(p);
 
+    p = checking_symbol(p, BRCKT_O);
+
+    p = checking_spaces(p);
+
     return 0;
 }
 void input(char* str1)
@@ -49,4 +54,17 @@ char* checking_spaces(char* p)
     }
 
     return p;
+}
+
+char* checking_symbol(char* p, char symbol)
+{
+    if (*p != symbol) {
+        printf("The symbol was not found or is in the wrong place. Try "
+               "again.\n");
+        exit(0);
+    } else {
+        printf("The symbol '%c' is written correctly\n", symbol);
+        p++;
+        return p;
+    }
 }
